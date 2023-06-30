@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+     <section class="hero">
+      <div class="container">
+        <h2>Welcome to PawPrints</h2>
+        <p>Find your perfect companion and give them a forever home</p>
+        <a href="#" class="btn">Adopt Now</a>
+      </div>
+    </section>
+  </header>
+
+  <section class="features">
+    <div class="container">
+      <div class="feature">
+        <img src="{% static "/images/adopt-me.jpg" %}" alt="Feature 1">
+        <h3>Search &amp; Adopt</h3>
+        <p>Browse through a wide selection of pets available for adoption and find your new furry friend.</p>
+      </div>
+      <div class="feature">
+        <img src="{% static "/images/resque-animals.png" %}" alt="Feature 3">
+        <h3>Volunteer &amp; Get Involved</h3>
+        <p>Join us, be a volunteer and make a difference in the lives of shelter animals.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonial">
+    <div class="container">
+      <h2>What Our Adopters Say</h2>
+      <div class="quote">
+        <blockquote>
+          "I found my best friend through PawPrints. The adoption process was smooth and the support from the
+          organization
+          is incredible."
+          <cite>- John Doe</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

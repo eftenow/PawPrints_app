@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+    <div class="add-pet-section">
+        <form class="create-pet-form" method="POST" action="{% url 'pet_add' %}" enctype="multipart/form-data">
+            {{ form|crispy }}
+            {% csrf_token %}
+            <div class="button-container">
+                <button type="submit">Add Pet</button>
+            </div>
+        </form>
+    </div>
+
+    {% block scripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let breedSelect = document.getElementById('id_breed');
+            const petCategorySelect = document.getElementById('id_pet_category');
+            const addedBreeds = new Set();
+
+            function updateBreedOptions() {
+                const petCategory = petCategorySelect.value.toLowerCase();
+                breedSelect.innerHTML = '';
+
+                fetch('get_breeds/?pet_category=' + petCategory)
+                    .then(response => response.json())
+                    .then(data => {
+                        data.breeds.forEach(breed => {
+                            if (!addedBreeds.has(breed.id)) {
+                                const option = document.createElement('option');
+                                option.text = breed.name;
+                                option.value = breed.id;
+
+                                if (!breedSelect.querySelector(`option[value="${option.value}"]`)) {
+                                    breedSelect.appendChild(option);
+                                    addedBreeds.add(breed.id);
+                                }
+                            }
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+
+            if (breedSelect && petCategorySelect) {
+                petCategorySelect.removeEventListener('change', updateBreedOptions);
+                petCategorySelect.addEventListener('change', updateBreedOptions);
+                updateBreedOptions();
+            }
+        });
+    </script>
+{% endblock %}
+
+
+
+
+{% endblock %}

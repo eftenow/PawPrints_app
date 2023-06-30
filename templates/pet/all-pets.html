@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h2 class="adopt-title">Available Pets for Adoption</h2>
+
+    <div class="filter-section">
+    <div class="searchbar">
+        <input type="text" id="breedFilter" placeholder="Search by breed">
+        <button id="searchButton" aria-label="Search">
+            <i class="fa fa-search"></i>
+        </button>
+    </div>
+</div>
+
+    </div>
+    <ul class="pets-list">
+
+        {% for pet in object_list %}
+            <li class="pet-item">
+                <div class="pet-image">
+                    <img src="{{ pet.image.url }}" alt="{{ pet.name }}">
+                </div>
+                <div class="pet-details">
+                    <h3>{{ pet.name }}</h3>
+                    <p>Breed: {{ pet.breed.name }}</p>
+                    <p>Category: {{ pet.pet_category }}</p>
+                    <p>Age: {{ pet.age }}</p>
+                    <p>Added at: {{ pet.added_at }}</p>
+                </div>
+                <button class="details-btn">Details</button>
+            </li>
+        {% empty %}
+            <li>No pets available for adoption.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

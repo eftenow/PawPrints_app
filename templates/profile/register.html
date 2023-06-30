@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="register-section">
+<h2 class="register-title">Register</h2>
+    <form class="register-form" method="post" action="{% url 'register' %}">
+      {{ form.username.label }}
+      {{ form.username }}
+      {{ form.username.errors }}
+      {{ form.email.label }}
+      {{ form.email }}
+      {{ form.email.errors }}
+      {{ form.password1.label }}
+      {{ form.password1 }}
+      {{ form.password.errors }}
+      {{ form.password2.label }}
+      {{ form.password2 }}
+      {{ form.password2.errors }}
+        {% csrf_token %}
+
+      <button  type="submit" class="register-button">Create account</button>
+      <p class="register-register-text">Already have an account?<br><a href="/login" class="register-login-link">Login here</a></p>
+    </form>
+</section>
+
+{% endblock %}

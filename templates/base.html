@@ -1,0 +1,63 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <title>PawPrints</title>
+    <link rel="stylesheet" href='{% static "/css/styles.css" %}'>
+    {% block styles %}{% endblock %}
+    <title>PawPrints</title>
+</head>
+
+<body>
+<header>
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <h2 class="logo-title">Paw</h2>
+                <a href="{% url 'home' %}">
+                    <img width="50px" src='{% static "/images/paw-print-seal.png" %}' alt="logo-image">
+                </a>
+                <h2 class="logo-title">Prints</h2>
+            </div>
+
+            <ul class="nav-links">
+                <li class="nav-item"><a href="{% url 'pet_list' %}"><i>Find Pet</i></a></li>
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item"><a href="{% url 'pet_add' %}"><i>Add Pet</i></a></li>
+                    <li class="nav-item"><a href="{% url 'account details' user.pk %}"><i>Profile</i></a></li>
+                    <li class="nav-item"><a href="{% url 'logout' %}"><i>Logout</i></a></li>
+                {% else %}
+                    <li class="nav-item"><a href="{% url 'login' %}"><i>Login</i></a></li>
+                    <li class="nav-item"><a href="{% url 'register' %}"><i>Register</i></a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main>
+    {% block content %}
+
+    {% endblock %}
+</main>
+<footer>
+    <div>
+        <p>&copy; 2023 PawPrints. All rights reserved.</p>
+        <ul class="footer-links">
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+</footer>
+{% block scripts %}
+
+{% endblock %}
+</body>
+</html>
