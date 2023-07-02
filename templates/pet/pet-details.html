@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="pet-details-page">
+        <div class="pet">
+            <div class="details-pet-image">
+            <img src="{{ pet.image.url }}" alt="{{ pet.name }}">
+        </div>
+        <div class="pet-info">
+            <h2>{{ pet.name }}</h2>
+            <p><strong>Breed:</strong> {{ pet.breed.name }}</p>
+            <p><strong>Category:</strong> {{ pet.pet_category }}</p>
+            <p><strong>Age:</strong> {{ pet.age }}</p>
+            <p><strong>Added at:</strong> {{ pet.added_at }}</p>
+            <!-- Additional pet information can be displayed here -->
+        </div>
+        </div>
+    <p class="details-description"><strong>Description:</strong> {{ pet.description }}</p>
+    </div>
+
+    <div class="comment-section">
+        <h3>Comments</h3>
+        <ul class="comment-list">
+            {% for comment in pet.comments %}
+                <li class="comment-item">
+                    <div class="comment-author">{{ comment.author }}</div>
+                    <div class="comment-content">{{ comment.content }}</div>
+                </li>
+            {% empty %}
+                <li class="comment-item">No comments yet.</li>
+            {% endfor %}
+        </ul>
+        <form class="comment-form" method="POST">
+            {% csrf_token %}
+            <input type="text" name="author" placeholder="Your Name" required>
+            <textarea name="content" placeholder="Your Comment" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+{% endblock %}

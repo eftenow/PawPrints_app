@@ -24,7 +24,8 @@ class PetCreateView(CreateView):
 
 
 class PetDetailView(DetailView):
-    pass
+    template_name = 'pet/pet-details.html'
+    model = Pet
 
 
 class PetEditView(UpdateView):

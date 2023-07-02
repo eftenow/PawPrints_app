@@ -28,7 +28,7 @@
                     <p>Age: {{ pet.age }}</p>
                     <p>Added at: {{ pet.added_at }}</p>
                 </div>
-                <button class="details-btn">Details</button>
+                <a href="{% url 'pet_detail' pet.id %}" class="details-btn">Details</a>
             </li>
         {% empty %}
             <li>No pets available for adoption.</li>
