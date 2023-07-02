@@ -40,7 +40,9 @@ class SignOutView(LogoutView):
 
 
 class UserDetailsView(DetailView):
-    pass
+    template_name = 'profile/profile-details.html'
+    model = UserModel
+
 
 
 class EditUserView(UpdateView):
