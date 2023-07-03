@@ -21,7 +21,7 @@ body {
 }
 
 .card .banner {
-    background-image: url("https://static.nashvillewraps.com/images/sku/P807-XLARGE.jpg");
+    background-image: url("https://i0.wp.com/jaimehaney.com/wp-content/uploads/2016/05/You-Me-and-the-Moon.jpg?fit=1000%2C1000&ssl=1");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -50,7 +50,7 @@ body {
 .card .menu {
     width: 100%;
     height: 5.5rem;
-    padding: 1rem;
+    padding: 0.6rem 1rem;
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
@@ -102,7 +102,7 @@ body {
     color: #a0a0a0;
     font-size: 0.85rem;
     text-align: center;
-    padding: 0 2rem 1.2rem;
+    padding: 0 2rem 0.3rem;
 }
 
 .card .actions {
@@ -121,12 +121,13 @@ body {
     text-align: center;
     width: 50%;
     margin: 0;
+    font-size: 1.3rem;
     box-sizing: border-box;
 }
 
 .card .actions .follow-info h2 a {
     text-decoration: none;
-    padding: 0.8rem;
+    padding: 0.5rem;
     display: flex;
     flex-direction: column;
     border-radius: 0.8rem;
@@ -183,4 +184,7 @@ body {
     text-align: justify;
     padding: 0 2rem 2.5rem;
     order: 100;
+    color: #a0a0a0;
+    font-size: 0.95rem;
+    margin-left: 2%;
 }

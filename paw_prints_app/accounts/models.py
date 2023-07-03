@@ -34,12 +34,24 @@ class Profile(models.Model):
     first_name = models.CharField(
         max_length=MAX_NAME_LEN,
         validators=[validators.MinLengthValidator(MIN_NAME_LEN), name_contains_only_letters],
+        null=True,
+        blank=True,
     )
     last_name = models.CharField(
         max_length=MAX_NAME_LEN,
         validators=[validators.MinLengthValidator(MIN_NAME_LEN), name_contains_only_letters],
+        null=True,
+        blank=True,
+    )
+    age = models.PositiveIntegerField(
+        null=True,
+        blank=True
     )
     profile_picture = models.ImageField(upload_to='images', validators=[validate_file_size])
+    description = models.TextField(
+        null=True,
+        blank=True
+    )
     user = models.OneToOneField(to=AppUser, on_delete=models.CASCADE)
 
     @property
