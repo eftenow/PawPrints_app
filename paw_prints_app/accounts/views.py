@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
-from paw_prints_app.accounts.forms import CreateProfileForm, LoginProfileForm
+from paw_prints_app.accounts.forms import CreateProfileForm, LoginProfileForm, EditProfileForm
 
 UserModel = get_user_model()
 
@@ -44,9 +44,27 @@ class UserDetailsView(DetailView):
     model = UserModel
 
 
-
 class EditUserView(UpdateView):
-    pass
+    template_name = 'profile/profile-edit.html'
+    model = UserModel
+    form_class = EditProfileForm
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        profile = self.object.profile
+
+        profile.first_name = form.cleaned_data['first_name']
+        profile.last_name = form.cleaned_data['last_name']
+        profile.gender = form.cleaned_data['gender']
+        profile.age = form.cleaned_data['age']
+        profile.description = form.cleaned_data['description']
+        profile.profile_picture = form.cleaned_data['profile_picture']
+
+        profile.save()
+        return response
+
+    def get_success_url(self):
+        return reverse_lazy('account details', kwargs={'pk': self.object.pk})
 
 
 class ProfileDeleteView(DeleteView):

@@ -1,5 +1,9 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.forms import ModelForm
+
+from paw_prints_app.accounts.models import Profile
+from django import forms
 
 UserModel = get_user_model()
 
@@ -18,3 +22,40 @@ class LoginProfileForm(AuthenticationForm):
             'placeholder': 'Username'
         })
         self.fields['password'].widget.attrs['placeholder'] = 'Password'
+
+
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('first_name', 'last_name', 'gender', 'age', 'description', 'profile_picture')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['first_name'] = forms.CharField(label='First Name', max_length=20,
+                                                    initial=getattr(self.instance.profile, 'first_name'))
+        self.fields['last_name'] = forms.CharField(label='Last Name', max_length=20,
+                                                   initial=getattr(self.instance.profile, 'last_name'))
+        self.fields['gender'] = forms.ChoiceField(label='Gender', choices=[('Male', 'Male'), ('Female', 'Female')],
+                                                  initial=getattr(self.instance.profile, 'age'))
+        self.fields['age'] = forms.IntegerField(label='Age', widget=forms.NumberInput(attrs={'type': 'number'}),
+                                                initial=getattr(self.instance.profile, 'age'))
+        self.fields['description'] = forms.CharField(label='Description', widget=forms.Textarea,
+                                                     initial=getattr(self.instance.profile, 'description'))
+        self.fields[
+            'profile_picture'].initial = self.instance.profile.profile_picture.url if self.instance.profile.profile_picture else ''
+
+    def save(self, commit=True):
+        profile = self.instance.profile
+
+        # Update profile_picture if a new file is uploaded
+        profile_picture = self.cleaned_data.get('profile_picture')
+        if profile_picture:
+            profile.profile_picture = profile_picture
+
+        return super().save(commit)
+
+    def clean_age(self):
+        age = self.cleaned_data.get('age')
+        if age and age < 0:
+            raise forms.ValidationError("Age cannot be negative.")
+        return age

@@ -30,6 +30,10 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
 class Profile(models.Model):
     MAX_NAME_LEN = 20
     MIN_NAME_LEN = 2
+    GENDER_CHOICES = (
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+    )
 
     first_name = models.CharField(
         max_length=MAX_NAME_LEN,
@@ -47,6 +51,7 @@ class Profile(models.Model):
         null=True,
         blank=True
     )
+    gender = models.CharField(max_length=6, choices=GENDER_CHOICES, null=True, blank=True)
     profile_picture = models.ImageField(upload_to='images', validators=[validate_file_size])
     description = models.TextField(
         null=True,

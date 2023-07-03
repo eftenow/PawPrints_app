@@ -4,8 +4,8 @@
 {% block content %}
     <div class="card">
         <div class="banner">
-            {% if object.profile.image_url %}
-                <img src="{{ object.profile.image_url }}" alt="">
+            {% if object.profile.profile_picture %}
+                <img src="{{ object.profile.profile_picture.url }}" alt="">
             {% else %}
                 {% if user.profile.gender == 'Female' %}
                     <img src="{% static 'images/female-user.png' %}" alt="">
@@ -16,7 +16,7 @@
             {% endif %}
         </div>
         <div class="menu">
-            <div class="opener"><i class="fa-solid fa-pen"></i></div>
+            <a href="{% url 'account edit' object.id %}" class="opener"><i class="fa-solid fa-pen"></i></a>
         </div>
         <h2 class="name">{{ user.username }}</h2>
         <div class="title">{{ user.profile.get_full_name }}</div>

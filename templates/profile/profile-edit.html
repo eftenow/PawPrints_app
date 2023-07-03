@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1 class="edit-profile-heading">Edit Profile</h1>
+    <form method="post" enctype="multipart/form-data" class="edit-profile-form">
+    <div class="profile-picture-box">
+        <div class="profile-picture-container">
+            <img id="profile-picture-preview" src="{{ form.instance.profile.profile_picture.url }}"
+                 alt="Profile Picture">
+        </div>
+        <input type="file" name="profile_picture" id="profile-picture-input" style="display: none;">
+        <label for="profile-picture-input" class="profile-picture-upload-btn"><i class="fa-solid fa-cloud-arrow-up"></i></label>
+    </div>
+
+        {% csrf_token %}
+        {{ form }}
+
+        <button type="submit" class="edit-profile-button">Save Changes</button>
+    </form>
+
+    {% block scripts %}
+        <script>
+            // JavaScript code to handle the profile picture upload
+
+            // Get the file input element
+            var profilePictureInput = document.querySelector("#profile-picture-input");
+
+            // Get the profile picture preview element
+            var profilePicturePreview = document.querySelector("#profile-picture-preview");
+
+            // Add event listener to the file input change event
+            profilePictureInput.addEventListener("change", function () {
+                // Check if a file is selected
+                if (profilePictureInput.files && profilePictureInput.files[0]) {
+                    // Create a FileReader object
+                    var reader = new FileReader();
+
+                    // Set the onload event handler
+                    reader.onload = function (e) {
+                        // Update the profile picture preview with the selected image
+                        profilePicturePreview.src = e.target.result;
+                    };
+
+                    // Read the selected file as a data URL
+                    reader.readAsDataURL(profilePictureInput.files[0]);
+                }
+            });
+        </script>
+    {% endblock %}
+{% endblock %}
