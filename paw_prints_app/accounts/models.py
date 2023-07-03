@@ -63,6 +63,13 @@ class Profile(models.Model):
         elif self.last_name:
             return self.last_name
 
+    @property
+    def adopted_pets_count(self):
+        return Pet.objects.filter(adopted_by=self.user).count()
+
+    @property
+    def pet_listings_count(self):
+        return Pet.objects.filter(added_by=self.user).count()
 
 class UserFavorites(models.Model):
     user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
@@ -71,5 +78,3 @@ class UserFavorites(models.Model):
 
     class Meta:
         unique_together = ['user', 'pet']
-
-

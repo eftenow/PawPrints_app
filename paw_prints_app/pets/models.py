@@ -19,6 +19,7 @@ class Pet(models.Model):
     image = models.ImageField(upload_to='pet_images')
     adoption_status = models.CharField(max_length=20, default='Available', blank=True)
     added_by = models.ForeignKey(UserModel, on_delete=models.CASCADE,blank=True, null=True)
+    adopted_by = models.OneToOneField(UserModel, on_delete=models.SET_NULL, blank=True, null=True, related_name='adoptions')
     added_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     slug = models.SlugField(
         unique=True,

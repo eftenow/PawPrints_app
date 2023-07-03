@@ -2,34 +2,39 @@
 {% load static %}
 
 {% block content %}
-  <div class="card">
-  <div class="banner">
-      {% if object.profile.image_url %}
-          <img src="{{ object.profile.image_url }}" alt="">
-          {% else %}
-      <img src="{% static 'images/female-user.png' %}" alt="">
-      {% endif %}
-  </div>
-  <div class="menu">
-    <div class="opener"><span></span><span></span><span></span></div>
-  </div>
-  <h2 class="name">{{ user.username }}</h2>
-  <div class="title">{{ user.profile.get_full_name }}</div>
+    <div class="card">
+        <div class="banner">
+            {% if object.profile.image_url %}
+                <img src="{{ object.profile.image_url }}" alt="">
+            {% else %}
+                {% if user.profile.gender == 'Female' %}
+                    <img src="{% static 'images/female-user.png' %}" alt="">
+                {% else %}
+                    <img src="{% static 'images/male-profile.png' %}" alt="">
 
-  {% if user.profile.age %}
-  <div class="title">{{ user.profile.age }} years-old</div>
-  {% endif %}
-  <div class="actions">
-    <div class="follow-info">
-      <h2><a href="#"><span>12</span><small>Pets Adopted</small></a></h2>
-      <h2><a href="#"><span>1000</span><small>Pet Listings</small></a></h2>
+                {% endif %}
+            {% endif %}
+        </div>
+        <div class="menu">
+            <div class="opener"><i class="fa-solid fa-pen"></i></div>
+        </div>
+        <h2 class="name">{{ user.username }}</h2>
+        <div class="title">{{ user.profile.get_full_name }}</div>
+
+        {% if user.profile.age %}
+            <div class="title">{{ user.profile.age }} years-old</div>
+        {% endif %}
+        <div class="actions">
+            <div class="follow-info">
+                <h2><a href="#"><span>{{ user.profile.adopted_pets_count }}</span><small>Pets Adopted</small></a></h2>
+                <h2><a href="#"><span>{{ user.profile.pet_listings_count }}</span><small>Pet Listings</small></a></h2>
+            </div>
+            <div class="follow-btn">
+                <button>Follow</button>
+            </div>
+        </div>
+        <div class="desc">{{ user.profile.description }}</div>
     </div>
-    <div class="follow-btn">
-      <button>Follow</button>
-    </div>
-  </div>
-  <div class="desc">{{ user.profile.description }}</div>
-</div>
 {% endblock %}
 
 
