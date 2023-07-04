@@ -36,23 +36,21 @@ class EditProfileForm(forms.ModelForm):
         self.fields['last_name'] = forms.CharField(label='Last Name', max_length=20,
                                                    initial=getattr(self.instance.profile, 'last_name'))
         self.fields['gender'] = forms.ChoiceField(label='Gender', choices=[('Male', 'Male'), ('Female', 'Female')],
-                                                  initial=getattr(self.instance.profile, 'age'))
+                                                  initial=getattr(self.instance.profile, 'gender'))
         self.fields['age'] = forms.IntegerField(label='Age', widget=forms.NumberInput(attrs={'type': 'number'}),
                                                 initial=getattr(self.instance.profile, 'age'))
         self.fields['description'] = forms.CharField(label='Description', widget=forms.Textarea,
                                                      initial=getattr(self.instance.profile, 'description'))
-        self.fields[
-            'profile_picture'].initial = self.instance.profile.profile_picture.url if self.instance.profile.profile_picture else ''
 
     def save(self, commit=True):
         profile = self.instance.profile
 
-        # Update profile_picture if a new file is uploaded
         profile_picture = self.cleaned_data.get('profile_picture')
         if profile_picture:
             profile.profile_picture = profile_picture
 
-        return super().save(commit)
+        profile.save()
+        return super().save(commit=False) if commit else self.instance
 
     def clean_age(self):
         age = self.cleaned_data.get('age')

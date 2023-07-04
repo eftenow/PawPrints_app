@@ -52,7 +52,7 @@ class Profile(models.Model):
         blank=True
     )
     gender = models.CharField(max_length=6, choices=GENDER_CHOICES, null=True, blank=True)
-    profile_picture = models.ImageField(upload_to='images', validators=[validate_file_size])
+    profile_picture = models.ImageField(upload_to='images', validators=[validate_file_size], null=True, blank=True)
     description = models.TextField(
         null=True,
         blank=True

@@ -53,18 +53,25 @@ class EditUserView(UpdateView):
         response = super().form_valid(form)
         profile = self.object.profile
 
+        # Update profile fields
         profile.first_name = form.cleaned_data['first_name']
         profile.last_name = form.cleaned_data['last_name']
         profile.gender = form.cleaned_data['gender']
         profile.age = form.cleaned_data['age']
         profile.description = form.cleaned_data['description']
-        profile.profile_picture = form.cleaned_data['profile_picture']
+
+        # Update profile picture if a new file is uploaded
+        profile_picture = form.cleaned_data['profile_picture']
+        if profile_picture:
+            profile.profile_picture = profile_picture
 
         profile.save()
         return response
 
     def get_success_url(self):
         return reverse_lazy('account details', kwargs={'pk': self.object.pk})
+
+
 
 
 class ProfileDeleteView(DeleteView):

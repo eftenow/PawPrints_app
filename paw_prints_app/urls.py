@@ -10,3 +10,4 @@ urlpatterns = [
     path('pets/', include('paw_prints_app.pets.urls')),
     path('adoption/', include('paw_prints_app.adoption.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
