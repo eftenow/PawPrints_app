@@ -4,13 +4,12 @@ body {
     font-size: 16px;
     color: #404040;
     font-family: Montserrat, sans-serif;
-    background-image: linear-gradient(to bottom right, #c0e9c0 0%, #a1d8a1 50%, #81c981 100%);
     background-position: center;
     background-attachment: fixed;
 }
 
 .card {
-    background-color: #fff;
+    background: linear-gradient(275deg, rgb(255 249 205 / 81%) 0%, rgb(255 249 205) 80%);
     max-width: 360px;
     display: flex;
     flex-direction: column;
@@ -64,10 +63,11 @@ body {
     position: relative;
     border-radius: 50%;
     transition: background-color 100ms ease-in-out;
+    color: #666666;
 }
 
 .card .menu .opener:hover {
-    background-color: #f2f2f2;
+    background: #edc31c99;
     cursor: pointer;
     color: #333333;
 }
@@ -91,7 +91,7 @@ body {
 
 .card .title {
     color: #a0a0a0;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     text-align: center;
     padding: 0 2rem 0.3rem;
 }
@@ -123,6 +123,7 @@ body {
     flex-direction: column;
     border-radius: 0.8rem;
     transition: background-color 100ms ease-in-out;
+    color: rgb(241, 133, 10);
 }
 
 .card .actions .follow-info h2 a i {
@@ -140,7 +141,7 @@ body {
 }
 
 .card .actions .follow-info h2 a:hover {
-    background-color: #f2f2f2;
+        background: #edc31c99;
 }
 
 .card .actions .follow-info h2 a:hover i {
@@ -222,6 +223,7 @@ body {
     border-radius: 5px;
     font-size: 14px;
     color: #333333;
+
 }
 
 .edit-profile-input[type="file"] {
@@ -251,7 +253,7 @@ body {
 
 
 input[type="file"],
-label[for="id_profile_picture"]{
+label[for="id_profile_picture"] {
     display: none;
 }
 
@@ -295,4 +297,29 @@ label[for="id_profile_picture"]{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.adopt-btn {
+    background-color: #ffd01a;
+    border: none;
+    padding: 0.4rem 1.2rem;
+    outline: none;
+    box-sizing: border-box;
+    border-radius: 1.5rem/50%;
+    transition: background-color 100ms ease-in-out, transform 200ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    color: #404040;
+    font-weight: 600;
+    box-shadow: 0 0 5px rgb(0 0 0 / 32%);
+    position: absolute;
+    top: 5%;
+    right: 2%;
+}
+
+.adopt-btn:hover {
+    background-color: #f7c32f;
+    color: #292929;
+    box-shadow: 0 0 9px rgb(0 0 0 / 38%);
 }

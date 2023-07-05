@@ -23,16 +23,17 @@ textarea {
 }
 
 button[type="submit"] {
-    background-color: #4CAF50;
+    background-color: rgb(241 133 10 / 60%);
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-weight: 600;
 }
 
 button[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: rgb(241 133 10 / 92%);
 }
 
 .edit-delete input,
@@ -40,13 +41,12 @@ button[type="submit"]:hover {
 .create-pet-form textarea,
 .edit-delete input,
 select {
-    background-color: rgb(231 231 231);
+    background: linear-gradient(275deg, rgba(255, 249, 205, 1) 0%, rgba(255, 249, 205, 1) 80%);
     border: 0.2px solid rgb(186, 184, 184);
-    border-radius: 3px;
-    padding-left: 2px;
     margin-top: 8px;
     border-radius: 4px;
     padding: 6px 8px;
+    font-family: 'Montserrat', 'sans-serif';
 }
 
 .create-pet-form div select {
@@ -58,7 +58,7 @@ select {
     margin-top: 3.5%;
 }
 
-
+/*all pets*/
 .adopt-title {
     text-align: center;
     margin: 2.5% 0 3.5% 0;
@@ -67,15 +67,9 @@ select {
 .filter-section {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
     justify-content: center;
-    flex-direction: column;
-}
-
-#breedFilter {
-    max-width: 280px;
-    padding: 5% 10%;
-    border-radius: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
 .filter-section label {
@@ -100,22 +94,23 @@ select {
 .searchbar {
     display: flex;
     align-items: center;
-    background-color: #f5f5f5;
+    background: linear-gradient(275deg, rgb(255 249 205 / 51%) 0%, rgb(255 249 205 / 68%) 80%);
     border-radius: 8px;
     padding: 4px;
-    border: 1px solid lightgray;
+    border: 1px solid rgb(255 139 8 / 39%);
 }
 
 #breedFilter {
     flex: 1;
-    max-width: 280px;
+    max-width: 320px;
+    min-width: 210px;
     border: none;
     outline: none;
     padding: 8px;
     margin-right: 4px;
-    font-size: 14px;
-    color: #333;
+    font-size: 13px;
     background-color: transparent;
+    font-family: 'Montserrat', 'sans-serif';
 }
 
 #searchButton {
@@ -123,11 +118,10 @@ select {
     border: none;
     margin: 0;
     cursor: pointer;
-    padding: 3.4% 2.5%;
 }
 
 #searchButton i {
-    font-size: 16px;
+    font-size: 15px;
     color: #666666;
 }
 
@@ -138,39 +132,68 @@ select {
     padding: 0;
 }
 
+.row {
+    width: 37%;
+    display: flex;
+    justify-content: center;
+}
+
+.col {
+    flex-basis: 100%;
+}
+
 .pet-item {
-    width: 300px;
-    margin: 20px;
-    background-color: #ECE2D8;
+    width: 90%;
+    max-width: 600px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    margin: 10px;
+    padding: 10px;
+    background: linear-gradient(275deg, rgb(255 249 205 / 51%) 0%, rgb(255 249 205 / 68%) 80%);
 }
 
-.pet-item img {
+.pet-item .pet-image {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px 10px 0 0;
+    text-align: center;
 }
 
-.pet-item .pet-details {
+.pet-item .pet-image img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.pet-item, .pet-details {
     padding: 15px;
 }
 
-.pet-item .pet-details h3 {
+
+.pet-item h3 {
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 12px;
-    color: #333333;
-    text-align: center;
+    margin-bottom: 16px;
+    color: #656363;
     margin-top: 0;
+    text-align: center;
 }
 
 .pet-item .pet-details p {
     font-size: 16px;
     margin-bottom: 5px;
     color: #666666;
+}
+
+.details-btn {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #ffffff;
+    background-color: rgb(241 133 10 / 60%);
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
 }
 
 .pet-item .pet-details .breed {
@@ -185,22 +208,26 @@ select {
 .pet-item .details-btn {
     display: flex;
     margin-top: 10px;
-    background-color: #FF8C42;
     border: none;
-    border-radius: 5px;
-    padding: 9px 16px;
     font-size: 15px;
     font-weight: bold;
     color: #FFFFFF;
     cursor: pointer;
-    transition: background-color 0.3s ease;
     justify-content: center;
     text-decoration: none;
+    background-color: rgb(241 133 10 / 70%);
+    padding: 0.4rem 1.2rem;
+    outline: none;
+    box-sizing: border-box;
+    border-radius: 1.5rem/50%;
+    transition: background-color 100ms ease-in-out, transform 200ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    box-shadow: 0 0 5px rgb(0 0 0 / 32%);
 }
 
 .pet-item .details-btn:hover {
-    background-color: #FF7733;
-    scale: 1.05;
+    background-color: rgb(241 133 10 / 90%);
+    box-shadow: 0 0 8px rgb(0 0 0 / 45%);
+    scale: 1.04;
 }
 
 .pet-item.empty {
@@ -213,6 +240,7 @@ select {
 
 .pet-details-page {
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -221,6 +249,7 @@ select {
     padding: 2% 0;
     width: 75%;
     margin: 5.5% auto;
+    background: linear-gradient(275deg, rgb(255 249 205 / 51%) 0%, rgb(255 249 205 / 68%) 80%);
 }
 
 .pet {
@@ -308,9 +337,9 @@ select {
     margin-bottom: 10px;
     border-radius: 4px;
     border: 1px solid #cccccc;
-    background-color: #f5f5f5;
-    font-size: 16px;
-    color: #333333;
+    background: linear-gradient(275deg, rgb(255 249 205 / 51%) 0%, rgb(255 249 205 / 68%) 80%);
+    font-size: 15px;
+    color: #666666;
 }
 
 .comment-form textarea {

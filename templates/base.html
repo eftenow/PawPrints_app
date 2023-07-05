@@ -26,7 +26,7 @@
             </div>
 
             <ul class="nav-links">
-                <li class="nav-item"><a href="{% url 'pet_list' %}"><i>Find Pet</i></a></li>
+                <li class="nav-item"><a href="{% url 'pet_list' %}"><i>Adopt</i></a></li>
                 {% if request.user.is_authenticated %}
                     <li class="nav-item"><a href="{% url 'pet_add' %}"><i>Add Pet</i></a></li>
                     <li class="nav-item"><a href="{% url 'account details' user.pk %}"><i>Profile</i></a></li>

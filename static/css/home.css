@@ -2,7 +2,10 @@ body {
     font-family: Latto, sans-serif;
     line-height: 1.6;
     background-color: #f5f5f5;
+    color: rgb(241, 133, 10);
+    background: linear-gradient(94deg, rgba(255, 249, 205, 1) 0%, rgba(255, 189, 138, 1) 100%);
     margin: 0;
+
 }
 
 
@@ -14,7 +17,7 @@ body {
 
 /* Header Styles */
 header {
-    background-color: #f8f8f8;
+    background: linear-gradient(275deg, rgb(255 249 205 / 51%) 0%, rgb(255 249 205 / 68%) 80%);
     padding: 12px 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -45,7 +48,7 @@ nav {
 }
 
 .logo-title {
-    font-family: "cursive", 'Comic Sans MS';
+    font-family: 'Merienda', cursive;
     color: #333;
     margin: 0;
 }
@@ -62,15 +65,17 @@ nav ul.nav-links li {
 
 nav ul.nav-links li a {
     text-decoration: none;
-    color: #333;
+    color: rgb(241, 133, 10);
+    font-size: 18px;;
     font-weight: bold;
+    font-family: 'Merienda', cursive;
 }
 
 /* Hero Section Styles */
 .hero {
     text-align: center;
     padding: 100px 0;
-    background-color: #fff;
+    background: linear-gradient(275deg, rgba(255, 249, 205, 1) 0%, rgba(255, 249, 205, 1) 80%);
 }
 
 .hero h2 {
@@ -102,7 +107,7 @@ nav ul.nav-links li a {
 /* Features Section Styles */
 .features {
     padding: 80px 0;
-    background-color: #f9f9f9;
+    background: linear-gradient(94deg, rgb(255 249 205) 0%, rgb(247 183 133) 100%);
 }
 
 .feature {
@@ -130,7 +135,7 @@ nav ul.nav-links li a {
 .testimonial {
     padding: 50px 0;
     text-align: center;
-    background-color: #f8f8f8;
+    background: linear-gradient(275deg, rgba(255, 249, 205, 1) 0%, rgba(255, 249, 205, 1) 80%);
 }
 
 .testimonial h2 {
