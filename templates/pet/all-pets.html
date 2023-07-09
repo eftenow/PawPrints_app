@@ -1,38 +1,57 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2 class="adopt-title">Available Pets for Adoption</h2>
+    <div class="pet-list-view">
+        <h2 class="adopt-title">Available Pets for Adoption</h2>
 
-    <div class="filter-section">
-        <div class="searchbar">
-            <input type="text" id="breedFilter" placeholder="Search by breed, name or category">
-            <button id="searchButton" aria-label="Search">
-                <i class="fa fa-search"></i>
-            </button>
+        <div class="filter-section">
+            <div class="searchbar">
+                <form id='searchbar-form' method="GET" action="{% url 'pet_list' %}">
+                    {% csrf_token %}
+                    {{ form.search }}
+                    <button disabled="disabled" id="searchButton" aria-label="Search">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <div class="pets-list">
-        {% for pet in object_list %}
-            <div class="row">
-                <div class="col">
-                    <div class="pet-item">
+
+        <div class="pets-list">
+            {% for pet in object_list %}
+                <div class="row">
+                    <div class="col">
+                        <div class="pet-item">
                             <h3>{{ pet.name }}</h3>
-                        <div class="pet-image">
-                            <img src="{{ pet.image.url }}" alt="{{ pet.name }}">
+                            <div class="pet-image">
+                                <img src="{{ pet.image.url }}" alt="{{ pet.name }}">
+                            </div>
+                            <div class="pet-details">
+                                <p>Breed: {{ pet.breed.name }}</p>
+                                <p>Category: {{ pet.pet_category }}</p>
+                                <p>Age: {{ pet.age }}</p>
+                                <p>Added at: {{ pet.added_at }}</p>
+                            </div>
+                            <a href="{% url 'pet_detail' pet.id %}" class="details-btn">Details</a>
                         </div>
-                        <div class="pet-details">
-                            <p>Breed: {{ pet.breed.name }}</p>
-                            <p>Category: {{ pet.pet_category }}</p>
-                            <p>Age: {{ pet.age }}</p>
-                            <p>Added at: {{ pet.added_at }}</p>
-                        </div>
-                        <a href="{% url 'pet_detail' pet.id %}" class="details-btn">Details</a>
                     </div>
                 </div>
-            </div>
-        {% empty %}
-            <p>No pets available for adoption.</p>
-        {% endfor %}
+            {% empty %}
+                <p>No pets available for adoption.</p>
+            {% endfor %}
+        </div>
     </div>
+{% endblock %}
+
+
+{% block scripts %}
+    <script>
+        const searchInput = document.getElementById('breedFilter');
+        const searchButton = document.getElementById('searchButton');
+
+        searchInput.addEventListener('input', function () {
+            const searchValue = searchInput.value.trim();
+            searchButton.disabled = searchValue === '';
+        });
+    </script>
 {% endblock %}

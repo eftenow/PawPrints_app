@@ -100,10 +100,15 @@ select {
     border: 1px solid rgb(255 139 8 / 39%);
 }
 
+#searchbar-form {
+    height: 30px;
+    display: flex;
+}
+
 #breedFilter {
     flex: 1;
     max-width: 320px;
-    min-width: 210px;
+    min-width: 200px;
     border: none;
     outline: none;
     padding: 8px;
@@ -130,6 +135,10 @@ select {
     flex-wrap: wrap;
     justify-content: center;
     padding: 0;
+}
+
+.pet-list-view {
+    min-height: 69vh;
 }
 
 .row {
