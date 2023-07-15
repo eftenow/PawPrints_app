@@ -1,5 +1,6 @@
 from django import forms
-
+import django
+django.setup()
 from paw_prints_app.pets.models import Pet
 
 
@@ -14,3 +15,4 @@ class SearchForm(forms.Form):
         max_length=100,
         required=False,
         widget=forms.TextInput(attrs={'id': 'breedFilter', 'placeholder': "Search by breed or name.."}))
+

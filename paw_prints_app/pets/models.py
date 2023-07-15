@@ -2,6 +2,7 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.conf import settings
 
+
 UserModel = settings.AUTH_USER_MODEL
 
 

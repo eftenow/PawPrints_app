@@ -2,18 +2,28 @@
 
 {% block content %}
     <section class="login-section">
-    <h2 class="login-title">Login</h2>
-    <form class="login-form" method="post" action="{% url 'login' %}">
+        <h2 class="login-title">Login</h2>
+        <form class="login-form" method="post" action="{% url 'login' %}">
 
-        {{ form.username.label }}
-        {{ form.username }}
-        {{ form.password.label }}
-        {{ form.password }}
-        {% csrf_token %}
+            {{ form.username.label }}
+            {{ form.username }}
+            {{ form.password.label }}
+            {{ form.password }}
+            {% if form.non_field_errors %}
+                <ul class='form-errors'>
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
 
-        <input type="submit" value="Login" class="login-button">
+            {% csrf_token %}
 
-        <p class="login-register-text">Don't have an account?<br><a href="{% url 'register' %}" class="login-register-link">Register here</a></p>
-    </form>
-</section>
+            <button type="submit" class="login-button">Login</button>
+
+            <p class="login-register-text">Don't have an account?<br><a href="{% url 'register' %}"
+                                                                        class="login-register-link">Register here</a>
+            </p>
+        </form>
+    </section>
 {% endblock %}

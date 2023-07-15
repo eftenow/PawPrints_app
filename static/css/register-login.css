@@ -28,7 +28,7 @@
     width: 96%;
 }
 
-.login-button{
+.login-button {
     width: 100% !important;
 }
 
@@ -87,6 +87,8 @@
 
 .login-section {
     padding: 5%;
+    min-height: 65vh;
+
 }
 
 .register-section {
@@ -152,7 +154,7 @@
 .login-register-text,
 .register-register-text {
     font-size: 14px;
-    margin-top: 30px;
+    margin-top: 25px;
     text-align: center;
     color: rgb(146 148 151);
 }
@@ -161,9 +163,13 @@
     position: relative;
 }
 
+.form-errors li {
+    color: #db0b0b;
+}
+
 .login-register-link,
 .register-login-link {
-    color: #333;
+    color: rgba(241, 156, 10, 0.9);
     font-weight: bold;
     text-decoration: none;
 }
