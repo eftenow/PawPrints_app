@@ -46,7 +46,7 @@ class Breed(models.Model):
     main_characteristics = models.CharField(blank=True, null=True)
     description = models.TextField()
     image = models.ImageField(upload_to='breed_images')
-    related_pets = models.ManyToManyField('Pet', related_name='related_breeds')
+    related_pets = models.ManyToManyField('Pet', related_name='related_breeds', blank=True, null=True)
 
 
 
