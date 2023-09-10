@@ -270,14 +270,14 @@ select {
 .details-description {
     font-size: 18px;
     margin-bottom: 5px;
+    padding: 16px 40px;
     color: #666666;
 }
 
 .details-pet-image img {
     width: 250px;
     height: 250px;
-    object-fit: cover;
-    border-radius: 50%;
+    border-radius: 23%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
