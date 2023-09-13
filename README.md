@@ -27,3 +27,20 @@ PetPaws is a platform built on Django with the MVT architecture. It's designed t
 1. Clone this repository:
 
    git clone https://github.com/yourusername/PetPaws.git
+
+2. Install required dependencies:
+
+   pip install -r requirements.txt
+
+
+3. Migrate:
+
+   python manage.py migrate
+
+4. Start the development server:
+
+   python manage.py runserver
+
+
+
+
