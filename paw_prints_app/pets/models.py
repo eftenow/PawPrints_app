@@ -22,6 +22,7 @@ class Pet(models.Model):
     added_by = models.ForeignKey(UserModel, on_delete=models.CASCADE,blank=True, null=True)
     adopted_by = models.OneToOneField(UserModel, on_delete=models.SET_NULL, blank=True, null=True, related_name='adoptions')
     added_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    contact_number = models.IntegerField()
     slug = models.SlugField(
         unique=True,
         editable=False
