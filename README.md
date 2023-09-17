@@ -8,6 +8,8 @@ PetPaws is a platform built on Django with the MVT architecture. It's designed t
 - **Search Functionality**: Users can search for specific breeds or other keywords to find the perfect pet.
 - **User Registration & Login**: While anyone can adopt a pet without registering, users need an account to add pets for adoption. This also allows them to track their listings, adopted animals, and to contact other users.
 - **Pet Listings**: Each pet has its own listing which may include details such as breed, age, and more.
+
+- **Pet adoption**: Users have the option to send adoptation request for any of the available pets that are listed at the moment. 
   
 ## Technologies Used
 
