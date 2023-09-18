@@ -277,7 +277,7 @@ select {
 .details-pet-image img {
     width: 250px;
     height: 250px;
-    border-radius: 23%;
+    border-radius: 50%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
