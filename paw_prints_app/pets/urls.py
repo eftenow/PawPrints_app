@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import get_breeds
+from .views import get_breeds, PetDetailView
 
 urlpatterns = [
     path('', views.PetListView.as_view(), name='pet_list'),
@@ -9,4 +9,6 @@ urlpatterns = [
     path('detail/<int:pk>/edit/', views.PetEditView.as_view(), name='pet_edit'),
     path('detail/<int:pk>/delete/', views.PetDeleteView.as_view(), name='pet_delete'),
     path('create/get_breeds/', get_breeds, name='get_breeds'),
+    path('detail/<int:pk>/', PetDetailView.as_view(), name='name_of_pet_detail_url'),
+
 ]

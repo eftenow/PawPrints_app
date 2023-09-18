@@ -1,7 +1,7 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.conf import settings
-
+from django.urls import reverse
 
 UserModel = settings.AUTH_USER_MODEL
 
@@ -34,6 +34,9 @@ class Pet(models.Model):
             self.slug = slugify(f'{self.name}-{self.id}')
 
         return super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('name_of_pet_detail_url', args=[str(self.id)])
 
 
 class Breed(models.Model):
