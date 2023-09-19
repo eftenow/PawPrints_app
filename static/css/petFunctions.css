@@ -321,6 +321,18 @@ select {
 
 .comment-item {
     margin-bottom: 20px;
+    background: linear-gradient(275deg, rgb(240 231 166 / 62%) 0%, rgb(242 238 213 / 74%) 80%);
+    border: none;
+    padding: 0.4rem 1.2rem;
+    outline: none;
+    box-sizing: border-box;
+    border-radius: 1.5rem/50%;
+    transition: background-color 100ms ease-in-out, transform 200ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    text-decoration: none;
+    font-size: 16px;
+    color: #404040;
+    font-weight: 600;
+    box-shadow: 0 0 5px rgb(0 0 0 / 32%);
 }
 
 .comment-author {
