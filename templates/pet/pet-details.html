@@ -24,7 +24,10 @@
         <ul class="comment-list">
             {% for comment in comments %}
                 <li class="comment-item">
-                    <div class="comment-author">{{ comment.to_user.username }}</div>
+                    <div class="comment-author-data">
+                        <div class="comment-author">{{ comment.to_user.username }}</div>
+                        <div class="comment-author-avatar">{{ comment.to_user.profile.profile_picture }}</div>
+                    </div>
                     <div class="comment-content">{{ comment.comment_text }}</div>
                 </li>
             {% empty %}

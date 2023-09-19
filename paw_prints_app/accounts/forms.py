@@ -31,16 +31,17 @@ class EditProfileForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['first_name'] = forms.CharField(label='First Name', max_length=20,
-                                                    initial=getattr(self.instance.profile, 'first_name'))
-        self.fields['last_name'] = forms.CharField(label='Last Name', max_length=20,
-                                                   initial=getattr(self.instance.profile, 'last_name'))
-        self.fields['gender'] = forms.ChoiceField(label='Gender', choices=[('Male', 'Male'), ('Female', 'Female')],
-                                                  initial=getattr(self.instance.profile, 'gender'))
-        self.fields['age'] = forms.IntegerField(label='Age', widget=forms.NumberInput(attrs={'type': 'number'}),
-                                                initial=getattr(self.instance.profile, 'age'))
-        self.fields['description'] = forms.CharField(label='Description', widget=forms.Textarea,
-                                                     initial=getattr(self.instance.profile, 'description'))
+
+        # Set required attribute to False for all fields
+        for field_name, field in self.fields.items():
+            field.required = False
+
+        # Set initial values
+        self.fields['first_name'].initial = getattr(self.instance.profile, 'first_name')
+        self.fields['last_name'].initial = getattr(self.instance.profile, 'last_name')
+        self.fields['gender'].initial = getattr(self.instance.profile, 'gender')
+        self.fields['age'].initial = getattr(self.instance.profile, 'age')
+        self.fields['description'].initial = getattr(self.instance.profile, 'description')
 
     def save(self, commit=True):
         profile = self.instance.profile
@@ -57,3 +58,4 @@ class EditProfileForm(forms.ModelForm):
         if age and age < 0:
             raise forms.ValidationError("Age cannot be negative.")
         return age
+
