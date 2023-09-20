@@ -38,8 +38,10 @@
                         {% endif %}
 
                         <div class="comment-author">{{ comment.to_user.username }}</div>
+
                     </div>
                     <div class="comment-content">{{ comment.comment_text }}</div>
+                    <div class="comment-date">{{ comment.date_time_of_publication|date:"Y-m-d" }}</div>
                 </li>
             {% empty %}
                 <li class="comment-item">No comments yet.</li>
