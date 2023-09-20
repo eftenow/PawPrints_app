@@ -28,6 +28,10 @@ nav {
     justify-content: space-between;
 }
 
+nav ul.nav-links li a i{
+    font-style: inherit;
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -56,6 +60,10 @@ nav {
 nav ul.nav-links {
     list-style: none;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 0.9rem;
+    margin-bottom: 0.2rem;
 }
 
 nav ul.nav-links li {
@@ -66,10 +74,19 @@ nav ul.nav-links li {
 nav ul.nav-links li a {
     text-decoration: none;
     color: rgb(241, 133, 10);
-    font-size: 18px;;
+    font-size: 18px;
     font-weight: bold;
-    font-family: 'Merienda', cursive;
+    padding: 0.45rem;
+    border-radius: 20%;
+    transition: background-color 0.3s, transform 0.3s;
 }
+
+nav ul.nav-links li a:hover {
+    background-color: rgb(241, 133, 10, 0.9);
+    color: #FFFFFF;
+    transform: scale(1.05);
+}
+
 
 /* Hero Section Styles */
 .hero {
