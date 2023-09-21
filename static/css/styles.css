@@ -4,6 +4,22 @@
 @import './profile-details.css';
 
 
-main{
+main {
     min-height: 70vh;
+}
+
+.contact-info-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.page-footer {
+    background: #40403e !important;
+    margin: 0;
+    padding: 0;
+}
+
+.page-footer * {
+    color: #FFFFFF;
 }
