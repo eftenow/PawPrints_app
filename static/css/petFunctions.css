@@ -410,12 +410,12 @@ select {
 
 
 .modal-content {
-    background-color: #424140;
+    background-color: #c08344;
     color: #333;
 }
 
 .modal-content {
-    border: 2px solid #ad8409;
+    border: 2px solid #b96c16;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 1rem;
 }
@@ -427,7 +427,7 @@ select {
 }
 
 .modal-footer button {
-    background-color: #f4bf42;
+    background-color: #4b3b16;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -435,7 +435,8 @@ select {
 }
 
 .modal-footer button:hover {
-    background-color: #edac12;
+    background-color: #322607;
+
 }
 
 
@@ -450,10 +451,11 @@ select {
 
 .modal-title{
     color: #dddddd;
+    font-weight: bold;
 }
 
 .bottom-text {
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.65rem;
     color: #dddddd;
     font-weight: bold;
 }
