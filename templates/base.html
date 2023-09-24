@@ -31,17 +31,38 @@
                 <h2 class="logo-title">Prints</h2>
             </div>
 
+            <!-- Add a common class to all anchor link buttons -->
             <ul class="nav-links">
-                <li class="nav-item"><a href="{% url 'pet_list' %}"><i>Adopt</i></a></li>
+                <li class="nav-item"><a href="{% url 'pet_list' %}" class="nav-button"><i>Adopt</i></a></li>
                 {% if request.user.is_authenticated %}
-                    <li class="nav-item"><a href="{% url 'pet_add' %}"><i>Add Pet</i></a></li>
-                    <li class="nav-item"><a href="{% url 'account details' user.pk %}"><i>Profile</i></a></li>
-                    <li class="nav-item"><a href="{% url 'logout' %}"><i>Logout</i></a></li>
+                    <li class="nav-item"><a href="{% url 'pet_add' %}" class="nav-button"><i>Add Pet</i></a></li>
+                    <li class="nav-item"><a href="{% url 'account details' user.pk %}" class="nav-button"><i>Profile</i></a>
+                    </li>
+                    <li class="nav-item"><a href="{% url 'logout' %}" class="nav-button"><i>Logout</i></a></li>
                 {% else %}
-                    <li class="nav-item"><a href="{% url 'login' %}"><i>Login</i></a></li>
-                    <li class="nav-item"><a href="{% url 'register' %}"><i>Register</i></a></li>
+                    <li class="nav-item"><a href="{% url 'login' %}" class="nav-button"><i>Login</i></a></li>
+                    <li class="nav-item"><a href="{% url 'register' %}" class="nav-button"><i>Register</i></a></li>
                 {% endif %}
             </ul>
+
+            <!-- JavaScript to add the 'selected-button' class -->
+            <script>
+                // Get the current URL path
+                var currentPath = window.location.pathname;
+
+                // Define an array of URLs where you want to add the class
+               var urlsToHighlight = ['/pets/create/', '/pets/', '/login/', '/register/', '/accounts/profile/<int:id>/'];
+
+                // Loop through anchor link buttons and add the class if the URL matches
+                var navButtons = document.querySelectorAll('.nav-button');
+                navButtons.forEach(function (button) {
+                    if (urlsToHighlight.includes(currentPath)) {
+                        button.classList.add('selected-button');
+                    }
+                });
+            </script>
+
+
         </div>
     </nav>
 </header>
