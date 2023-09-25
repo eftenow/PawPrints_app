@@ -36,7 +36,7 @@ class SignInView(LoginView):
 
 
 class SignOutView(LogoutView):
-    pass
+    next_page = reverse_lazy('home')
 
 
 class UserDetailsView(DetailView):
