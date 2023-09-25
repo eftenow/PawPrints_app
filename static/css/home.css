@@ -84,7 +84,7 @@ nav ul.nav-links li a {
 nav ul.nav-links li a:hover,
 .selected-button{
     background-color: rgb(241, 133, 10, 0.9);
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     transform: scale(1.05);
 }
 

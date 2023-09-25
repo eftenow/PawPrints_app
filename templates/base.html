@@ -45,21 +45,21 @@
                 {% endif %}
             </ul>
 
-            <!-- JavaScript to add the 'selected-button' class -->
+
             <script>
-                // Get the current URL path
-                var currentPath = window.location.pathname;
+                const currentPath = window.location.pathname;
 
-                // Define an array of URLs where you want to add the class
-               var urlsToHighlight = ['/pets/create/', '/pets/', '/login/', '/register/', '/accounts/profile/<int:id>/'];
+                const urlsToHighlight = ['/pets/create/', '/pets/', '/accounts/login/', '/accounts/register/', '/accounts/profile/'];
 
-                // Loop through anchor link buttons and add the class if the URL matches
-                var navButtons = document.querySelectorAll('.nav-button');
-                navButtons.forEach(function (button) {
-                    if (urlsToHighlight.includes(currentPath)) {
-                        button.classList.add('selected-button');
+                const navButtons = document.querySelectorAll('.nav-button');
+                for (const button of navButtons) {
+                    if (urlsToHighlight.includes(currentPath) || currentPath.startsWith('/accounts/profile/')) {
+                        if (button.getAttribute('href') === currentPath) {
+                            button.classList.add('selected-button');
+                            break;
+                        }
                     }
-                });
+                }
             </script>
 
 
