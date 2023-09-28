@@ -9,10 +9,11 @@ from paw_prints_app.pets.forms import PetCreateForm, SearchForm
 from paw_prints_app.pets.models import Pet, Breed
 
 
-# Create your views here.
+
 class PetListView(ListView):
     template_name = 'pet/all-pets.html'
     model = Pet
+    context_object_name = 'pets'
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -30,7 +31,7 @@ class PetListView(ListView):
         return queryset
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data()
+        context = super().get_context_data(**kwargs)
         search_form = SearchForm(self.request.GET)
         context['form'] = search_form
         return context

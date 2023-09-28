@@ -40,6 +40,33 @@
                 <p>No pets available for adoption.</p>
             {% endfor %}
         </div>
+
+        <div class="pagination">
+            <span class="step-links">
+                {% if pets.has_previous %}
+                    <a href="?page=1">
+                        <i class="fas fa-angle-double-left"></i>
+                    </a>
+                    <a href="?page={{ pets.previous_page_number }}">
+                        <i class="fas fa-angle-left"></i>
+                    </a>
+                {% endif %}
+
+                <span class="current-page">
+                    Page {{ pets.number }} of {{ pets.paginator.num_pages }}.
+                </span>
+
+                {% if pets.has_next %}
+                    <a href="?page={{ pets.next_page_number }}">
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                    <a href="?page={{ pets.paginator.num_pages }}">
+                        <i class="fas fa-angle-double-right"></i>
+                    </a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
     </div>
 {% endblock %}
 
