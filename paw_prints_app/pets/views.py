@@ -8,12 +8,14 @@ from paw_prints_app.common.models import Comment
 from paw_prints_app.pets.forms import PetCreateForm, SearchForm
 from paw_prints_app.pets.models import Pet, Breed
 
+from django.core.paginator import Paginator
 
 
 class PetListView(ListView):
     template_name = 'pet/all-pets.html'
     model = Pet
-    context_object_name = 'pets'
+    context_object_name = 'object_list'
+    paginate_by = 1
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -34,8 +36,8 @@ class PetListView(ListView):
         context = super().get_context_data(**kwargs)
         search_form = SearchForm(self.request.GET)
         context['form'] = search_form
+        context['object_list'] = context['page_obj']
         return context
-
 
 
 class PetCreateView(CreateView):
@@ -64,7 +66,6 @@ class PetDetailView(DetailView):
         comment_text = request.POST.get('content')
         Comment.objects.create(comment_text=comment_text, to_pet=pet, to_user=user)
         return redirect(pet.get_absolute_url())
-
 
 
 class PetEditView(UpdateView):
