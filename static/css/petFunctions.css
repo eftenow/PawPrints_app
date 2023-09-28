@@ -504,3 +504,37 @@ footer > section:nth-child(2) > div > div > div.col-md-4.col-lg-3.col-xl-3.mx-au
 }
 
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.pagination a {
+    font-size: 16px;
+    text-decoration: none;
+    padding: 4px 8px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.current-page {
+    font-size: 16px;
+    margin: 0 10px;
+    color: #333;
+}
+
+.pagination a[disabled] {
+    pointer-events: none;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
