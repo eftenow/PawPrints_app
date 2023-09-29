@@ -14,9 +14,11 @@
 
             {{ form.image.label_tag }}
             <label for="id_image" class="custom-file-upload">
-                 Upload Image <i class="fa fa-cloud-upload"></i>
+                Upload Image <i class="fa fa-cloud-upload"></i>
                 {{ form.image }}
             </label>
+            <span id="file-name-placeholder"></span>
+
 
             {{ form.contact_number.label_tag }}
             {{ form.contact_number }}
@@ -66,6 +68,17 @@
                     petCategorySelect.removeEventListener('change', updateBreedOptions);
                     petCategorySelect.addEventListener('change', updateBreedOptions);
                     updateBreedOptions();
+                }
+            });
+
+            document.getElementById("id_image").addEventListener("change", function () {
+                const fileInput = this;
+                const fileNamePlaceholder = document.getElementById("file-name-placeholder");
+
+                if (fileInput.files.length > 0) {
+                    fileNamePlaceholder.textContent = fileInput.files[0].name;
+                } else {
+                    fileNamePlaceholder.textContent = "Upload Image";
                 }
             });
         </script>
