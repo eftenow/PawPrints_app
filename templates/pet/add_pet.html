@@ -3,54 +3,73 @@
 {% block content %}
     <div class="add-pet-section">
         <form class="create-pet-form" method="POST" action="{% url 'pet_add' %}" enctype="multipart/form-data">
-            {{ form }}
+            {{ form.name.label_tag }}
+            {{ form.name }}
+            {{ form.pet_category.label_tag }}
+            {{ form.pet_category }}
+            {{ form.breed.label_tag }}
+            {{ form.breed }}
+            {{ form.age.label_tag }}
+            {{ form.age }}
+
+            {{ form.image.label_tag }}
+            <label for="id_image" class="custom-file-upload">
+                 Upload Image <i class="fa fa-cloud-upload"></i>
+                {{ form.image }}
+            </label>
+
+            {{ form.contact_number.label_tag }}
+            {{ form.contact_number }}
+            {{ form.description.label_tag }}
+            {{ form.description }}
             {% csrf_token %}
             <div class="button-container">
                 <button type="submit">Add Pet</button>
             </div>
         </form>
+
     </div>
 
     {% block scripts %}
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            let breedSelect = document.getElementById('id_breed');
-            const petCategorySelect = document.getElementById('id_pet_category');
-            const addedBreeds = new Set();
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                let breedSelect = document.getElementById('id_breed');
+                const petCategorySelect = document.getElementById('id_pet_category');
+                const addedBreeds = new Set();
 
-            function updateBreedOptions() {
-                const petCategory = petCategorySelect.value.toLowerCase();
-                breedSelect.innerHTML = '';
+                function updateBreedOptions() {
+                    const petCategory = petCategorySelect.value.toLowerCase();
+                    breedSelect.innerHTML = '';
 
-                fetch('get_breeds/?pet_category=' + petCategory)
-                    .then(response => response.json())
-                    .then(data => {
-                        data.breeds.forEach(breed => {
-                            if (!addedBreeds.has(breed.id)) {
-                                const option = document.createElement('option');
-                                option.text = breed.name;
-                                option.value = breed.id;
+                    fetch('get_breeds/?pet_category=' + petCategory)
+                        .then(response => response.json())
+                        .then(data => {
+                            data.breeds.forEach(breed => {
+                                if (!addedBreeds.has(breed.id)) {
+                                    const option = document.createElement('option');
+                                    option.text = breed.name;
+                                    option.value = breed.id;
 
-                                if (!breedSelect.querySelector(`option[value="${option.value}"]`)) {
-                                    breedSelect.appendChild(option);
-                                    addedBreeds.add(breed.id);
+                                    if (!breedSelect.querySelector(`option[value="${option.value}"]`)) {
+                                        breedSelect.appendChild(option);
+                                        addedBreeds.add(breed.id);
+                                    }
                                 }
-                            }
+                            });
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
                         });
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
-            }
+                }
 
-            if (breedSelect && petCategorySelect) {
-                petCategorySelect.removeEventListener('change', updateBreedOptions);
-                petCategorySelect.addEventListener('change', updateBreedOptions);
-                updateBreedOptions();
-            }
-        });
-    </script>
-{% endblock %}
+                if (breedSelect && petCategorySelect) {
+                    petCategorySelect.removeEventListener('change', updateBreedOptions);
+                    petCategorySelect.addEventListener('change', updateBreedOptions);
+                    updateBreedOptions();
+                }
+            });
+        </script>
+    {% endblock %}
 
 
 

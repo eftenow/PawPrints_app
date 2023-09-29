@@ -15,7 +15,7 @@ class PetListView(ListView):
     template_name = 'pet/all-pets.html'
     model = Pet
     context_object_name = 'object_list'
-    paginate_by = 1
+    paginate_by = 10
 
     def get_queryset(self):
         queryset = super().get_queryset()

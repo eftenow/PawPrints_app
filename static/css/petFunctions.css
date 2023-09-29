@@ -455,7 +455,7 @@ select {
     color: #fff;
 }
 
-.left-footer-text{
+.left-footer-text {
     text-align: left;
 }
 
@@ -537,4 +537,21 @@ footer > section:nth-child(2) > div > div > div.col-md-4.col-lg-3.col-xl-3.mx-au
     pointer-events: none;
     opacity: 0.6;
     cursor: not-allowed;
+}
+
+
+label.custom-file-upload {
+    display: inline-block;
+    background-color: rgb(236 134 17 / 70%);
+    color: #fff;
+    border: 1px solid #dea81f;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+
+.custom-file-upload i {
+    margin: 5px;
+    font-size: 1.1rem;
 }
