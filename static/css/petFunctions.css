@@ -555,3 +555,12 @@ label.custom-file-upload {
     margin: 5px;
     font-size: 1.1rem;
 }
+
+
+.file-name-container-text{
+    margin-left: 8px;
+    padding: 11px;
+    background-color: #41474e;
+    border-radius: 8px;
+    color: #fff;
+}

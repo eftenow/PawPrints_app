@@ -17,6 +17,7 @@
                 Upload Image <i class="fa fa-cloud-upload"></i>
                 {{ form.image }}
             </label>
+
             <span id="file-name-placeholder"></span>
 
 
@@ -77,8 +78,10 @@
 
                 if (fileInput.files.length > 0) {
                     fileNamePlaceholder.textContent = fileInput.files[0].name;
+                    fileNamePlaceholder.classList.add('file-name-container-text')
                 } else {
                     fileNamePlaceholder.textContent = "Upload Image";
+                    fileNamePlaceholder.classList.remove('file-name-container-text')
                 }
             });
         </script>
