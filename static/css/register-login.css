@@ -21,11 +21,11 @@
 .register-form input,
 .login-form input {
     font-size: 16px;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 6px;
+    border-radius: 6px;
     border: 1px solid #ccc;
     margin-bottom: 15px;
-    width: 96%;
+    width: 100%;
 }
 
 .login-button {
@@ -86,7 +86,7 @@
 }
 
 .login-section,
-.register-section{
+.register-section {
     padding: 5%;
     min-height: 77vh;
 
@@ -98,12 +98,12 @@
 
 .login-form,
 .register-form {
-    background-color: #fff;
+    background-color: #fdfcfc;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     margin: 0 auto;
     max-width: 560px;
-    padding: 36px 48px;
+    padding: 40px 48px;
 }
 
 .login-label,
@@ -155,7 +155,7 @@
 .login-register-text,
 .register-register-text {
     font-size: 14px;
-    margin-top: 25px;
+    margin-top: 27px;
     text-align: center;
     color: rgb(146 148 151);
 }
