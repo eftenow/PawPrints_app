@@ -85,9 +85,10 @@
     margin-bottom: 2.5%;
 }
 
-.login-section {
+.login-section,
+.register-section{
     padding: 5%;
-    min-height: 65vh;
+    min-height: 77vh;
 
 }
 
