@@ -25,8 +25,7 @@
         <ul class="comment-list">
             {% for comment in comments %}
                 <li class="comment-item">
-                    <div class="comment-author-data">
-
+                    <a class="comment-author-data" href="{% url 'account details' pk=comment.to_user.id %}">
                         {% if comment.to_user.profile.profile_picture %}
                             <img src="{{ comment.to_user.profile.profile_picture.url }}" alt="">
                         {% else %}
@@ -40,7 +39,7 @@
 
                         <div class="comment-author">{{ comment.to_user.username }}</div>
 
-                    </div>
+                    </a>
                     <div class="comment-content">{{ comment.comment_text }}</div>
                     <div class="comment-date">{{ comment.date_time_of_publication|date:"Y-m-d" }}</div>
                 </li>
@@ -56,12 +55,10 @@
         </form>
     </div>
 
-    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel"
-         aria-hidden="true">
+    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content contact-modal">
             <div class="modal-header">
-                <!-- Add an icon or image here -->
                 <h5 class="modal-title" id="contactModalLabel">Contact the Owner</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -72,12 +69,13 @@
                 <p class="bottom-text">To adopt this pet, please contact the user who posted the listing:</p>
                 <p class="bottom-text">Contact: {{ pet.added_by.username }}</p>
                 <p class="bottom-text">Phone: {{ pet.contact_number }}</p>
-
             </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
-
         </div>
     </div>
+</div>
+
 {% endblock %}
