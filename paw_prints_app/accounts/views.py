@@ -3,6 +3,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
+from django.http import HttpResponseForbidden
 
 from paw_prints_app.accounts.forms import CreateProfileForm, LoginProfileForm, EditProfileForm
 
@@ -67,6 +68,11 @@ class EditUserView(UpdateView):
 
         profile.save()
         return response
+
+    def dispatch(self, request, *args, **kwargs):
+        if self.request.user.pk != self.get_object().pk:
+            return HttpResponseForbidden("You are not allowed to edit this profile.")
+        return super().dispatch(request, *args, **kwargs)
 
     def get_success_url(self):
         return reverse_lazy('account details', kwargs={'pk': self.object.pk})
