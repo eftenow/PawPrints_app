@@ -16,7 +16,9 @@
             {% endif %}
         </div>
         <div class="menu">
+            {% if user == object %}
             <a href="{% url 'account edit' object.id %}" class="opener"><i class="fa-solid fa-pen"></i></a>
+            {% endif %}
         </div>
         <h2 class="name">{{ user.username }}</h2>
         <div class="title">{{ user.profile.get_full_name }}</div>
@@ -29,9 +31,12 @@
                 <h2><a href="#"><span>{{ user.profile.adopted_pets_count }}</span><small>Pets Adopted</small></a></h2>
                 <h2><a href="#"><span>{{ user.profile.pet_listings_count }}</span><small>Pet Listings</small></a></h2>
             </div>
+            {% if user != object %}
             <div class="follow-btn">
-                <button>Follow</button>
+                <button>Message <i class="fa-solid fa-paper-plane"></i></button>
             </div>
+            {% endif %}
+
         </div>
         <div class="desc">{{ user.profile.description }}</div>
     </div>
