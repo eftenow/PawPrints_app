@@ -14,8 +14,9 @@
 
 .register-form label,
 .login-form label {
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 5px;
+    color: #515050;
 }
 
 .register-form input,
@@ -105,6 +106,13 @@
     max-width: 560px;
     padding: 40px 48px;
 }
+
+
+
+.form-field {
+    margin-bottom: 10px;
+}
+
 
 .login-label,
 .register-label {

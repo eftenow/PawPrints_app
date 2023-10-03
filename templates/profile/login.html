@@ -5,10 +5,16 @@
         <h2 class="login-title">Login</h2>
         <form class="login-form" method="post" action="{% url 'login' %}">
 
-            {{ form.username.label }}
-            {{ form.username }}
-            {{ form.password.label }}
-            {{ form.password }}
+            <div class="form-field">
+                <label for="{{ form.username.id_for_label }}" class="custom-label">Username</label>
+                {{ form.username }}
+            </div>
+
+            <div class="form-field">
+                <label for="{{ form.password.id_for_label }}" class="custom-label">Password</label>
+                {{ form.password }}
+            </div>
+
             {% if form.non_field_errors %}
                 <ul class='form-errors'>
                     {% for error in form.non_field_errors %}

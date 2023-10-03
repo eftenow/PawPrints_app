@@ -17,11 +17,9 @@ class CreateProfileForm(UserCreationForm):
 class LoginProfileForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs.update({
-            'autofocus': True,
-            'placeholder': 'Username'
-        })
-        self.fields['password'].widget.attrs['placeholder'] = 'Password'
+        pass
+
+
 
 
 class EditProfileForm(forms.ModelForm):
