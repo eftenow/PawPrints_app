@@ -21,7 +21,8 @@
 
 .register-form input,
 .login-form input {
-    font-size: 16px;
+    font-size: 14px;
+    color: #605d5d;
     padding: 6px;
     border-radius: 6px;
     border: 1px solid #ccc;

@@ -50,3 +50,11 @@ input[type="password"]:hover {
 
 }
 
+
+a {
+    color: #595a5b;
+}
+
+a:hover{
+    color: #3f3e3e;
+}

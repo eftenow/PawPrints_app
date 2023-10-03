@@ -12,15 +12,24 @@ class Pet(models.Model):
         ('cat', 'Cat'),
     ]
 
+    GENDER_CHOICES = (
+        ('male', 'Male'),
+        ('female', 'Female'),
+    )
+
     name = models.CharField(max_length=30)
     pet_category = models.CharField(max_length=3, choices=PET_CATEGORY_CHOICES)
     age = models.CharField()
-    breed = models.ForeignKey('Breed', on_delete=models.SET_NULL, null=True, blank=True, default='Unknown')
+    gender = models.CharField(
+        max_length=10,
+        choices=GENDER_CHOICES,
+        blank=True,
+        null=True,
+    )
     description = models.TextField()
     image = models.ImageField(upload_to='pet_images')
     adoption_status = models.CharField(max_length=20, default='Available', blank=True)
     added_by = models.ForeignKey(UserModel, on_delete=models.CASCADE,blank=True, null=True)
-    adopted_by = models.OneToOneField(UserModel, on_delete=models.SET_NULL, blank=True, null=True, related_name='adoptions')
     added_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     contact_number = models.IntegerField()
     slug = models.SlugField(
