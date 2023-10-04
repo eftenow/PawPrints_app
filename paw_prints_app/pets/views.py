@@ -6,7 +6,7 @@ from django.views.generic import ListView, CreateView, DetailView, UpdateView, D
 
 from paw_prints_app.common.models import Comment
 from paw_prints_app.pets.forms import PetCreateForm, SearchForm
-from paw_prints_app.pets.models import Pet, Breed
+from paw_prints_app.pets.models import Pet
 
 from django.core.paginator import Paginator
 
@@ -26,7 +26,6 @@ class PetListView(ListView):
 
             if search_text:
                 queryset = queryset.filter(
-                    Q(breed__name__icontains=search_text) |
                     Q(name__icontains=search_text)
                 )
 

@@ -7,8 +7,8 @@
             {{ form.name }}
             {{ form.pet_category.label_tag }}
             {{ form.pet_category }}
-            {{ form.breed.label_tag }}
-            {{ form.breed }}
+            {{ form.gender.label_tag }}
+            {{ form.gender }}
             {{ form.age.label_tag }}
             {{ form.age }}
 
@@ -35,43 +35,6 @@
 
     {% block scripts %}
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                let breedSelect = document.getElementById('id_breed');
-                const petCategorySelect = document.getElementById('id_pet_category');
-                const addedBreeds = new Set();
-
-                function updateBreedOptions() {
-                    const petCategory = petCategorySelect.value.toLowerCase();
-                    breedSelect.innerHTML = '';
-
-                    fetch('get_breeds/?pet_category=' + petCategory)
-                        .then(response => response.json())
-                        .then(data => {
-                            data.breeds.forEach(breed => {
-                                if (!addedBreeds.has(breed.id)) {
-                                    const option = document.createElement('option');
-                                    option.text = breed.name;
-                                    option.value = breed.id;
-
-                                    if (!breedSelect.querySelector(`option[value="${option.value}"]`)) {
-                                        breedSelect.appendChild(option);
-                                        addedBreeds.add(breed.id);
-                                    }
-                                }
-                            });
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                        });
-                }
-
-                if (breedSelect && petCategorySelect) {
-                    petCategorySelect.removeEventListener('change', updateBreedOptions);
-                    petCategorySelect.addEventListener('change', updateBreedOptions);
-                    updateBreedOptions();
-                }
-            });
-
             document.getElementById("id_image").addEventListener("change", function () {
                 const fileInput = this;
                 const fileNamePlaceholder = document.getElementById("file-name-placeholder");

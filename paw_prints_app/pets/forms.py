@@ -7,7 +7,7 @@ from paw_prints_app.pets.models import Pet
 class PetCreateForm(forms.ModelForm):
     class Meta:
         model = Pet
-        fields = ['name', 'pet_category', 'breed', 'age', 'image', 'contact_number', 'description']
+        fields = ['name', 'pet_category', 'gender', 'age', 'image', 'contact_number', 'description']
 
 
 class SearchForm(forms.Form):
