@@ -29,7 +29,7 @@ class Pet(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='pet_images')
     adoption_status = models.CharField(max_length=20, default='Available', blank=True)
-    added_by = models.ForeignKey(UserModel, on_delete=models.CASCADE,blank=True, null=True)
+    added_by = models.ForeignKey(UserModel, on_delete=models.CASCADE, blank=True, null=True)
     added_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     contact_number = models.IntegerField()
     slug = models.SlugField(
@@ -47,7 +47,17 @@ class Pet(models.Model):
     def get_absolute_url(self):
         return reverse('name_of_pet_detail_url', args=[str(self.id)])
 
+    def get_pet_category(self):
+        if not self.pet_category:
+            self.age = 'Not specified.'
+        return self.pet_category.capitalize()
 
+    def get_pet_gender(self):
+        if not self.gender:
+            self.gender = 'Not specified.'
+        return self.gender.capitalize()
 
-
-
+    def get_pet_age(self):
+        if not self.age:
+            self.age = 'Not specified.'
+        return self.age.capitalize()

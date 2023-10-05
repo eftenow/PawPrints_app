@@ -27,9 +27,9 @@
                                 <img src="{{ pet.image.url }}" alt="{{ pet.name }}">
                             </div>
                             <div class="pet-details">
-                                <p>Breed: {{ pet.breed.name }}</p>
-                                <p>Category: {{ pet.pet_category }}</p>
-                                <p>Age: {{ pet.age }}</p>
+                                <p>Category: {{ pet.get_pet_category }}</p>
+                                <p>Gender: {{ pet.get_pet_gender}}</p>
+                                <p>Age: {{ pet.get_pet_age }}</p>
                                 <p>Added at: {{ pet.added_at }}</p>
                             </div>
                             <a href="{% url 'pet_detail' pet.id %}" class="details-btn">Details</a>
