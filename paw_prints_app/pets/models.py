@@ -20,6 +20,7 @@ class Pet(models.Model):
     name = models.CharField(max_length=30)
     pet_category = models.CharField(max_length=3, choices=PET_CATEGORY_CHOICES)
     age = models.CharField()
+    town = models.CharField(default='Sofia')
     gender = models.CharField(
         max_length=10,
         choices=GENDER_CHOICES,

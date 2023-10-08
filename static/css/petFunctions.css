@@ -275,19 +275,20 @@ select {
 }
 
 .details-pet-image img {
-    width: 250px;
-    height: 250px;
+    width: 240px;
+    height: 240px;
     border-radius: 50%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 .pet-info {
     margin-left: 2.5%;
+    margin-top: 1.5%;
 }
 
 .pet-info h2 {
     font-size: 32px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     color: #333333;
     margin-top: 0;
 }
