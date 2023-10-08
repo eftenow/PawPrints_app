@@ -51,6 +51,11 @@ class Profile(models.Model):
         null=True,
         blank=True
     )
+    town = models.CharField(
+        max_length=MAX_NAME_LEN,
+        null=True,
+        blank=True
+    )
     gender = models.CharField(max_length=6, choices=GENDER_CHOICES, null=True, blank=True)
     profile_picture = models.ImageField(upload_to='images', validators=[validate_file_size], null=True, blank=True)
     description = models.TextField(
@@ -67,6 +72,8 @@ class Profile(models.Model):
             return self.first_name
         elif self.last_name:
             return self.last_name
+        else:
+            return "";
 
     @property
     def adopted_pets_count(self):

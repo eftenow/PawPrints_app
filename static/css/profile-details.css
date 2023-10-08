@@ -174,12 +174,12 @@ body {
 }
 
 .card .desc {
-    text-align: justify;
-    padding: 0 2rem 2.5rem;
+    text-align: center;
+    padding: 1rem 2rem 2.5rem;
     order: 100;
     color: #a0a0a0;
     font-size: 0.95rem;
-    margin-left: 2%;
+
 }
 
 

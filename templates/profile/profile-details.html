@@ -28,7 +28,7 @@
         {% endif %}
         <div class="actions">
             <div class="follow-info">
-                <h2><a href="#"><span>{{ user.profile.adopted_pets_count }}</span><small>Pets Adopted</small></a></h2>
+                <h2><a href="#"><span>0</span><small>Pets Adopted</small></a></h2>
                 <h2><a href="#"><span>{{ user.profile.pet_listings_count }}</span><small>Pet Listings</small></a></h2>
             </div>
             {% if user != object %}
@@ -38,7 +38,8 @@
             {% endif %}
 
         </div>
-        <div class="desc">{{ user.profile.description }}</div>
+        <div class="desc">{{ user.profile.description|default:"No description yet." }}</div>
+
     </div>
 {% endblock %}
 
