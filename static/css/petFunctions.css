@@ -10,6 +10,7 @@
 label {
     display: block;
     font-weight: bold;
+    margin: 0.75rem 0;
 }
 
 input[type="text"],
@@ -43,7 +44,6 @@ button[type="submit"]:hover {
 select {
     background: linear-gradient(275deg, rgba(255, 249, 205, 1) 0%, rgba(255, 249, 205, 1) 80%);
     border: 0.2px solid rgb(186, 184, 184);
-    margin-top: 8px;
     border-radius: 4px;
     padding: 6px 8px;
     font-family: 'Montserrat', 'sans-serif';
@@ -558,7 +558,7 @@ label.custom-file-upload {
 }
 
 
-.file-name-container-text{
+.file-name-container-text {
     margin-left: 8px;
     padding: 11px;
     background-color: #41474e;

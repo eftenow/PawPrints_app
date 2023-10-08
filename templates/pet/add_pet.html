@@ -5,6 +5,8 @@
         <form class="create-pet-form" method="POST" action="{% url 'pet_add' %}" enctype="multipart/form-data">
             {{ form.name.label_tag }}
             {{ form.name }}
+            {{ form.town.label_tag }}
+            {{ form.town }}
             {{ form.pet_category.label_tag }}
             {{ form.pet_category }}
             {{ form.gender.label_tag }}
