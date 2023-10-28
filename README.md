@@ -42,7 +42,3 @@ PetPaws is a platform built on Django with the MVT architecture. It's designed t
 4. Start the development server:
 
    python manage.py runserver
-
-
-
-
